@@ -4,8 +4,15 @@ let express = require('express')
 
 let app = express()
 
+app.set('view engine', 'pug')
+
 app.get('/', (req, res) => {
-  res.status(200).send('hello world!')
+  let view = 'greeting' // .pug
+  let params = {
+    title: 'Greeting World',
+    name: 'Sam'
+  }
+  res.render(view, params)
 })
 
 app.listen(8000, () => {
